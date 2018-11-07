@@ -10,7 +10,8 @@
         <script src="script/command.js"></script>
         <script src="script/memoryedit.js"></script>
         <script src="script/memory.js"></script>
-        <script src="script/button.js"></script>
+        <script src="script/run.js"></script>
+        <script src="script/light.js"></script>
 
         <script type="text/javascript">
             window.onload = reloadView;
@@ -29,26 +30,26 @@
         </div>
         <div class="content">
             <div class="leftBox">
-                <div>
-                    <button width="100">RUN ▶</button>
-                    <button width="100">STOP ⏹</button>
-                </div>
-                <div>
-                    <p>EditProgram</p>
-                    <input type="number" value="0" id="editprogram_pointer">
-                    <input type="number" value="0" min=0 max=15 id="editprogram_value">
-                    <button onclick="programEdit()">Edit</button>
-                </div>
+                <button id="run" onclick="run()" width="100">RUN ▶</button>
+                <button onclick="stop()" width="100">STOP ⏹</button>
+                <p>Program Text</p>
+                <input id="program_text" type="text" onClick="this.select()">
+                <button onclick="getProgramText()">Get</button>
+                <button onclick="setProgramText()">Set</button>
             </div>
             <div class="centerBox">
-                <img id="l0" src="img/off.png" width="50" height="50">
-                <img id="l1" src="img/off.png" width="50" height="50">
-                <img id="l2" src="img/off.png" width="50" height="50">
-                <img id="l3" src="img/off.png" width="50" height="50">
-                <img id="l4" src="img/off.png" width="50" height="50">
-                <img id="l5" src="img/off.png" width="50" height="50">
-                <img id="l6" src="img/off.png" width="50" height="50">
+                <div>
+                    <img id="l6" class="light" src="img/off.png">
+                    <img id="l5" class="light" src="img/off.png">
+                    <img id="l4" class="light" src="img/off.png">
+                    <img id="l3" class="light" src="img/off.png">
+                    <img id="l2" class="light" src="img/off.png">
+                    <img id="l1" class="light" src="img/off.png">
+                    <img id="l0" class="light" src="img/off.png">
 
+                    <img id="showlight" class="show" src="img/null.png">
+                </div>
+                <br>
                 <table>
                     <tr>
                         <td><button onclick="keyClick('C')" class="key">C</button></td>
@@ -80,7 +81,7 @@
                 <div>
                     <button onclick="reloadView()">Reload</button>
                     <button id="select" onclick="selectMode()">Select</button>
-                    <button onclick="editMode()">Edit</button>
+                    <button id="edit" onclick="editMode()">Edit</button>
                     <button id="save" class="hidden" onclick="SaveEdit()">Save</button>
                     <p id="mode"></p>
                 </div>

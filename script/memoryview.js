@@ -52,15 +52,7 @@ function programView()
 {
     var endofmemory = parseInt("4F", 16);
 
-    if (program === undefined)
-    {
-        program = [];
-        // 3つ多めに入れることにより、プログラムのオーバーランを防ぐ
-        for(var i = 0; i <= (endofmemory + 3); i++)
-        {
-            program.push("F");
-        }
-    }
+    if (program === undefined) resetAllProgram();
 
     var element = document.getElementById("memoryview");
     var str = "";
@@ -80,14 +72,7 @@ function programView()
 
 function memoryView()
 {
-    if (memory === undefined)
-    {
-        memory = [];
-        for(var i = 0; i < 16; i++)
-        {
-            memory.push("F");
-        }
-    }
+    if (memory === undefined) resetMemory();
 
     var element = document.getElementById("memoryview");
     var str = "";
@@ -117,17 +102,7 @@ function memoryView()
 
 function programViewCommandMode()
 {
-    var endofmemory = parseInt("4F", 16);
-
-    if (program === undefined)
-    {
-        program = [];
-        // 3つ多めに入れることにより、プログラムのオーバーランを防ぐ
-        for(var i = 0; i <= (endofmemory + 3); i++)
-        {
-            program.push("F");
-        }
-    }
+    if (program === undefined) resetAllProgram();
 
     var element = document.getElementById("memoryview");
     var str = "";
@@ -166,35 +141,27 @@ function programViewCommandMode()
 
 function editMode()
 {
+    var endofmemory = parseInt("4F", 16);
+
     var save = document.getElementById("save");
     save.className = "";
     var select = document.getElementById("select");
     select.className = "hidden";
 
-    var endofmemory = parseInt("4F", 16);
-
-    if (program === undefined)
-    {
-        program = [];
-        // 3つ多めに入れることにより、プログラムのオーバーランを防ぐ
-        for(var i = 0; i <= (endofmemory + 3); i++)
-        {
-            program.push("F");
-        }
-    }
+    if (program === undefined) resetAllProgram();
 
     var element = document.getElementById("memoryview");
     var str = "";
 
-    str += "<table class='memoryTable'>";
+    str += "<form><table class='memoryTable'>";
 
     for(var i = 0; i <= endofmemory; i++)
     {
         str += "<tr><td>" + i.toString(16).toUpperCase() + "</td>" +
-            "<td><input value=" + program[i] + " id='ipt" + i + "'>" +  + "</td></tr>\n";
+            "<td><input type='text' value='" + program[i] + "' id='ipt" + i + "'>" +  + "</td></tr>\n";
     }
 
-    str += "</table>"
+    str += "</table></form>"
 
     element.innerHTML = str;
 }

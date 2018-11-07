@@ -13,3 +13,4 @@ var zrex = "F";
 
 var flag = true;
 var key = undefined;
+var pointer = 0;
