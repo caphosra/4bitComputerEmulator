@@ -127,3 +127,21 @@ function getProgramText()
     }
     program_text.value = str;
 }
+
+var oneframe_ipt = undefined;
+var oneframe_out = undefined;
+
+function setOneFrame()
+{
+    if(oneframe_ipt == undefined)
+    {
+        oneframe_ipt = document.getElementById("oneframe");
+    }
+    if(oneframe_out == undefined)
+    {
+        oneframe_out = document.getElementById("oneframe_out");
+    }
+
+    oneframe_out.innerHTML = oneframe_ipt.value;
+    oneframe = oneframe_ipt.value;
+}

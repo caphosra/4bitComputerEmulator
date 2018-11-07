@@ -20,6 +20,7 @@
         <link rel="stylesheet" type="text/css" href="style/index.css">
         <link rel="stylesheet" type="text/css" href="style/memoryview.css">
         <link rel="stylesheet" type="text/css" href="style/key.css">
+        <link rel="stylesheet" type="text/css" href="style/button.css">
     </head>
     <body>
         <div class="header">
@@ -30,12 +31,17 @@
         </div>
         <div class="content">
             <div class="leftBox">
-                <button id="run" onclick="run()" width="100">RUN ▶</button>
-                <button onclick="stop()" width="100">STOP ⏹</button>
-                <p>Program Text</p>
+                <img id="run" src="img/run.png" class="image_button" width="50" height="50" onclick="run()">
+                <img id="stop" src="img/stop.png" class="image_button" width="50" height="50" onclick="stop()">
+
+                <p>Program As Text</p>
                 <input id="program_text" type="text" onClick="this.select()">
                 <button onclick="getProgramText()">Get</button>
                 <button onclick="setProgramText()">Set</button>
+
+                <p>One Frame</p>
+                <input type="range" min="1" max="100" value="50" id="oneframe" oninput="setOneFrame()">
+                <div id="oneframe_out" class="oneframe_out">50</div>
             </div>
             <div class="centerBox">
                 <div>
@@ -85,7 +91,7 @@
                     <button id="save" class="hidden" onclick="SaveEdit()">Save</button>
                     <p id="mode"></p>
                 </div>
-                <div id="memoryview">
+                <div id="memoryview"></div>
             </div>
         </div>
     </body>

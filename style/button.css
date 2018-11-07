@@ -1,0 +1,9 @@
+img.image_button:hover{
+	opacity:0.5;
+	cursor: pointer;
+}
+
+img.image_button:active{
+	position: relative;
+	top: 3px;
+}
