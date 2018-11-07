@@ -358,7 +358,7 @@ function SIFT()
 function TIMR()
 {
     flag = true;
-    waittime = 100 * (ar + 1);
+    waittime = 100 * (parseInt(ar, 16) + 1);
 }
 
 function DSPR()
