@@ -1,0 +1,51 @@
+html, body {
+    height: 100%
+    }
+
+p{
+    padding-left: 10px;
+}
+
+.header{
+    padding-top: 10px;
+    padding-left: 100px;
+    padding-bottom: 10px;
+
+    font-style: italic;
+
+    /*回り込み解除*/
+    clear: both;
+}
+
+.inlineBlock{
+    display: inline-block;
+}
+
+.content{
+    height: 900px;
+}
+
+.leftBox{
+    float: left;
+    background-color: black;
+    width: 20%;
+    height: 100%;
+
+    color: orange;
+}
+
+.centerBox{
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+
+.rightBox{
+    float: left;
+    background-color: black;
+    width: 20%;
+    height: 100%;
+    overflow: scroll;
+
+    color: mediumaquamarine;
+}

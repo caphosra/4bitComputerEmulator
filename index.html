@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Capra 4bit Computer Emulator</title>
+
+        <meta charset="UTF-8">
+
+        <script src="script/notice.js"></script>
+        <script src="script/memoryview.js"></script>
+        <script src="script/command.js"></script>
+        <script src="script/memoryedit.js"></script>
+        <script src="script/memory.js"></script>
+        <script src="script/button.js"></script>
+
+        <script type="text/javascript">
+            window.onload = reloadView;
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="style/index.css">
+        <link rel="stylesheet" type="text/css" href="style/memoryview.css">
+        <link rel="stylesheet" type="text/css" href="style/key.css">
+    </head>
+    <body>
+        <div class="header">
+            <div>
+                <h1 class="inlineBlock">Capra 4bit Computer Emulator</h1>
+                <p class="inlineBlock">@ 2018 capra314cabra</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="leftBox">
+                <div>
+                    <button width="100">RUN ▶</button>
+                    <button width="100">STOP ⏹</button>
+                </div>
+                <div>
+                    <p>EditProgram</p>
+                    <input type="number" value="0" id="editprogram_pointer">
+                    <input type="number" value="0" min=0 max=15 id="editprogram_value">
+                    <button onclick="programEdit()">Edit</button>
+                </div>
+            </div>
+            <div class="centerBox">
+                <img id="l0" src="img/off.png" width="50" height="50">
+                <img id="l1" src="img/off.png" width="50" height="50">
+                <img id="l2" src="img/off.png" width="50" height="50">
+                <img id="l3" src="img/off.png" width="50" height="50">
+                <img id="l4" src="img/off.png" width="50" height="50">
+                <img id="l5" src="img/off.png" width="50" height="50">
+                <img id="l6" src="img/off.png" width="50" height="50">
+
+                <table>
+                    <tr>
+                        <td><button onclick="keyClick('C')" class="key">C</button></td>
+                        <td><button onclick="keyClick('D')" class="key">D</button></td>
+                        <td><button onclick="keyClick('E')" class="key">E</button></td>
+                        <td><button onclick="keyClick('F')" class="key">F</button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="keyClick('8')" class="key">8</button></td>
+                        <td><button onclick="keyClick('9')" class="key">9</button></td>
+                        <td><button onclick="keyClick('A')" class="key">A</button></td>
+                        <td><button onclick="keyClick('B')" class="key">B</button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="keyClick('4')" class="key">4</button></td>
+                        <td><button onclick="keyClick('5')" class="key">5</button></td>
+                        <td><button onclick="keyClick('6')" class="key">6</button></td>
+                        <td><button onclick="keyClick('7')" class="key">7</button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="keyClick('0')" class="key">0</button></td>
+                        <td><button onclick="keyClick('1')" class="key">1</button></td>
+                        <td><button onclick="keyClick('2')" class="key">2</button></td>
+                        <td><button onclick="keyClick('3')" class="key">3</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="rightBox">
+                <div>
+                    <button onclick="reloadView()">Reload</button>
+                    <button id="select" onclick="selectMode()">Select</button>
+                    <button onclick="editMode()">Edit</button>
+                    <button id="save" class="hidden" onclick="SaveEdit()">Save</button>
+                    <p id="mode"></p>
+                </div>
+                <div id="memoryview">
+            </div>
+        </div>
+    </body>
+</html>
