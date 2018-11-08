@@ -21,7 +21,7 @@ function reloadView()
     var save = document.getElementById("save");
     save.className = "hidden";
     var select = document.getElementById("select");
-    select.className = "";
+    select.className = "image_button";
 
     var m = document.getElementById("mode");
 
@@ -144,7 +144,7 @@ function editMode()
     var endofmemory = parseInt("4F", 16);
 
     var save = document.getElementById("save");
-    save.className = "";
+    save.className = "image_button";
     var select = document.getElementById("select");
     select.className = "hidden";
 

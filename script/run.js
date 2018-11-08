@@ -15,7 +15,9 @@ function run()
     init();
 
     var runbutton = document.getElementById("run");
-    runbutton.disabled = "disabled";
+    runbutton.className = "not_active";
+    var stopbutton = document.getElementById("stop");
+    stopbutton.className = "image_button";
 
     running = true;
     timer = setInterval(function()
@@ -53,7 +55,9 @@ function stop()
     if(timer != undefined) clearInterval(timer);
     init();
     var runbutton = document.getElementById("run");
-    runbutton.disabled = "";
+    runbutton.className = "image_button";
+    var stopbutton = document.getElementById("stop");
+    stopbutton.className = "not_active";
 }
 
 function init()

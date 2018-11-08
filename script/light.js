@@ -21,6 +21,7 @@ function show(number)
     {
         showlight = document.getElementById("showlight");
     }
+    
     if(number == undefined) 
     {
         showlight.src = "img/null.png";

@@ -1,9 +1,13 @@
 img.image_button:hover{
-	opacity:0.5;
+	opacity:0.8;
 	cursor: pointer;
 }
 
 img.image_button:active{
 	position: relative;
 	top: 3px;
+}
+
+img.not_active{
+	opacity: 0.3;
 }

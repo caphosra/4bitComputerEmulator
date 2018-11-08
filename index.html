@@ -31,8 +31,8 @@
         </div>
         <div class="content">
             <div class="leftBox">
-                <img id="run" src="img/run.png" class="image_button" width="50" height="50" onclick="run()">
-                <img id="stop" src="img/stop.png" class="image_button" width="50" height="50" onclick="stop()">
+                <img id="run" title="Run" src="img/run.png" class="image_button" width="50" height="50" onclick="run()">
+                <img id="stop" title="Stop" src="img/stop.png" class="not_active" width="50" height="50" onclick="stop()">
 
                 <p>Program As Text</p>
                 <input id="program_text" type="text" onClick="this.select()">
@@ -85,10 +85,10 @@
             </div>
             <div class="rightBox">
                 <div>
-                    <button onclick="reloadView()">Reload</button>
-                    <button id="select" onclick="selectMode()">Select</button>
-                    <button id="edit" onclick="editMode()">Edit</button>
-                    <button id="save" class="hidden" onclick="SaveEdit()">Save</button>
+                    <img title="Reload" src="img/reload.png" class="image_button" width="50" height="50" onclick="reloadView()">
+                    <img id="select" title="Select" src="img/select.png" class="image_button" width="50" height="50" onclick="selectMode()">
+                    <img id="edit" title="Edit" src="img/edit.png" class="image_button" width="50" height="50" onclick="editMode()">
+                    <img id="save" title="Save" src="img/save.png" class="hidden" width="50" height="50" onclick="SaveEdit()">
                     <p id="mode"></p>
                 </div>
                 <div id="memoryview"></div>
