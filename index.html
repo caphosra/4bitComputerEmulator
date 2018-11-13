@@ -34,6 +34,9 @@
                 <img id="run" title="Run" src="img/run.png" class="image_button" width="50" height="50" onclick="run()">
                 <img id="stop" title="Stop" src="img/stop.png" class="not_active" width="50" height="50" onclick="stop()">
 
+                <p>Hexadecimal</p>
+                <input id="isHexadecimal" type="checkbox" oninput="reloadView()">
+
                 <p>Program As Text</p>
                 <input id="program_text" type="text" onClick="this.select()">
                 <button onclick="getProgramText()">Get</button>
@@ -85,10 +88,12 @@
             </div>
             <div class="rightBox">
                 <div>
-                    <img title="Reload" src="img/reload.png" class="image_button" width="50" height="50" onclick="reloadView()">
+                    <img id="reload" title="Reload" src="img/reload.png" class="image_button" width="50" height="50" onclick="reloadView()">
                     <img id="select" title="Select" src="img/select.png" class="image_button" width="50" height="50" onclick="selectMode()">
                     <img id="edit" title="Edit" src="img/edit.png" class="image_button" width="50" height="50" onclick="editMode()">
-                    <img id="save" title="Save" src="img/save.png" class="hidden" width="50" height="50" onclick="SaveEdit()">
+                    <img id="cancel" title="Cancel" src="img/cancel.png" class="hidden"  width="50" height="50" onclick="reloadView()">
+                    <img id="save" title="Save" src="img/save.png" class="hidden" width="50" height="50" onclick="saveEdit()">
+
                     <p id="mode"></p>
                 </div>
                 <div id="memoryview"></div>

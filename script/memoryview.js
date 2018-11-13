@@ -2,14 +2,13 @@
 mode
 0 : program view
 1 : memory view
-2 : program view command mode
 */
 var mode = 0;
 
 function selectMode()
 {
     mode = mode + 1;
-    mode = mode % 3;
+    mode = mode % 2;
 
     reloadView();
 }
@@ -18,10 +17,11 @@ function reloadView()
 {
     console.log(mode);
 
-    var save = document.getElementById("save");
-    save.className = "hidden";
-    var select = document.getElementById("select");
-    select.className = "image_button";
+    SetActiveButton("reload", true);
+    SetActiveButton("save", false);
+    SetActiveButton("cancel", false);
+    SetActiveButton("select", true);
+    SetActiveButton("edit", true);
 
     var m = document.getElementById("mode");
 
@@ -29,20 +29,23 @@ function reloadView()
     {
         case 0:
         {
-            m.innerHTML = "program(16)";
-            programView();
+            var hex = document.getElementById("isHexadecimal");
+            if(hex.checked)
+            {
+                m.innerHTML = "program(16)";
+                programView();
+            }
+            else
+            {
+                m.innerHTML = "program(code)";
+                programViewCommandMode();
+            }
         }
         break;
         case 1:
         {
             m.innerHTML = "memory(16)";
             memoryView();
-        }
-        break;
-        case 2:
-        {
-            m.innerHTML = "program(code)";
-            programViewCommandMode();
         }
         break;
     }
@@ -79,7 +82,7 @@ function memoryView()
 
     str += "<table class='memoryTable'>";
 
-    for(var i = 0; i < 15; i++)
+    for(var i = 0; i < 16; i++)
     {
         str += "<tr><td>M" + i.toString(16).toUpperCase() + "</td>" +
             "<td>" + memory[i] + "</td></tr>\n";
@@ -143,37 +146,133 @@ function editMode()
 {
     var endofmemory = parseInt("4F", 16);
 
-    var save = document.getElementById("save");
-    save.className = "image_button";
-    var select = document.getElementById("select");
-    select.className = "hidden";
+    SetActiveButton("cancel", true);
+    SetActiveButton("save", true);
 
-    if (program === undefined) resetAllProgram();
+    SetActiveButton("reload", false);
+    SetActiveButton("select", false);
+    SetActiveButton("edit", false);
 
-    var element = document.getElementById("memoryview");
-    var str = "";
-
-    str += "<form><table class='memoryTable'>";
-
-    for(var i = 0; i <= endofmemory; i++)
+    switch(mode)
     {
-        str += "<tr><td>" + i.toString(16).toUpperCase() + "</td>" +
-            "<td><input type='text' value='" + program[i] + "' id='ipt" + i + "'>" +  + "</td></tr>\n";
+        case 0:
+        {
+            if (program === undefined) resetAllProgram();
+
+            var element = document.getElementById("memoryview");
+            var str = "";
+
+            str += "<form><table class='memoryTable'>";
+
+            for(var i = 0; i <= endofmemory; i++)
+            {
+            str += "<tr><td>" + i.toString(16).toUpperCase() + "</td>" +
+                "<td><input type='text' value='" + program[i] + "' id='ipt" + i + "'>" +  + "</td></tr>\n";
+            }
+
+            str += "</table></form>"
+
+            element.innerHTML = str;
+        }
+        break;
+        case 1:
+        {
+            if (program === undefined) resetMemory();
+
+            var element = document.getElementById("memoryview");
+            var str = "";
+
+            str += "<form><table class='memoryTable'>";
+
+            for(var i = 0; i < 16; i++)
+            {
+                str += "<tr><td>M" + i.toString(16).toUpperCase() + "</td>" +
+                    "<td><input type='text' value='" + memory[i] + "' id='ipt" + i + "'>" +  + "</td></tr>\n";
+            }
+
+            str += "<tr><td>Ar</td>" +
+                "<td><input type='text' value='" + ar + "' id='ipt16'>" +  + "</td></tr>\n";
+            str += "<tr><td>Br</td>" +
+                "<td><input type='text' value='" + br + "' id='ipt17'>" +  + "</td></tr>\n";
+            str += "<tr><td>Yr</td>" +
+                "<td><input type='text' value='" + yr + "' id='ipt18'>" +  + "</td></tr>\n";
+            str += "<tr><td>Zr</td>" +
+                "<td><input type='text' value='" + zr + "' id='ipt19'>" +  + "</td></tr>\n";
+            str += "<tr><td>ArEx</td>" +
+                "<td><input type='text' value='" + arex + "' id='ipt20'>" +  + "</td></tr>\n";
+            str += "<tr><td>BrEx</td>" +
+                "<td><input type='text' value='" + brex + "' id='ipt21'>" +  + "</td></tr>\n";
+            str += "<tr><td>YrEx</td>" +
+                "<td><input type='text' value='" + yrex + "' id='ipt22'>" +  + "</td></tr>\n";
+            str += "<tr><td>ZrEx</td>" +
+                "<td><input type='text' value='" + zrex + "' id='ipt23'>" +  + "</td></tr>\n";
+
+            str += "</table></form>"
+
+            element.innerHTML = str;
+        }
+        break;
     }
 
-    str += "</table></form>"
-
-    element.innerHTML = str;
+    
 }
 
-function SaveEdit()
+function saveEdit()
 {
-    var endofmemory = parseInt("4F", 16);
-
-    for(var i = 0; i <= endofmemory; i++)
+    switch(mode)
     {
-        var ipt = document.getElementById("ipt" + i);
-        program[i] = ipt.value.toUpperCase();
+        case 0:
+        {
+            var endofmemory = parseInt("4F", 16);
+
+            for(var i = 0; i <= endofmemory; i++)
+            {
+                var ipt = document.getElementById("ipt" + i);
+                program[i] = ipt.value.toUpperCase();
+            }
+            reloadView();
+        }
+        break;
+        case 1:
+        {
+            for(var i = 0; i < 16; i++)
+            {
+                var ipt = document.getElementById("ipt" + i);
+                memory[i] = ipt.value.toUpperCase();
+            }
+
+            var ipt = document.getElementById("ipt16");
+            ar = ipt.value.toUpperCase(); 
+            var ipt = document.getElementById("ipt17");
+            br = ipt.value.toUpperCase(); 
+            var ipt = document.getElementById("ipt18");
+            yr = ipt.value.toUpperCase(); 
+            var ipt = document.getElementById("ipt19");
+            zr = ipt.value.toUpperCase(); 
+            var ipt = document.getElementById("ipt20");
+            arex = ipt.value.toUpperCase(); 
+            var ipt = document.getElementById("ipt21");
+            brex = ipt.value.toUpperCase(); 
+            var ipt = document.getElementById("ipt22");
+            yrex = ipt.value.toUpperCase(); 
+            var ipt = document.getElementById("ipt23");
+            zrex = ipt.value.toUpperCase(); 
+
+            reloadView();
+        }
+        break;
     }
-    reloadView();
+}
+
+function SetActiveButton(id, active)
+{
+    var button = document.getElementById(id);
+    if(active)
+    {
+        button.className = "image_button";
+    }
+    else
+    {
+        button.className = "hidden";
+    }
 }
