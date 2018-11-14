@@ -1,6 +1,8 @@
 # 4bitComputerEmulator
 
 It is a emulator for 4bit computer(GMC-4).
+[Use it!](https://capra314cabra.github.io/4bitComputerEmulator/index.html)
+![Run](https://github.com/capra314cabra/ImageForREADME/blob/master/4bitComputerEmulator/UseImage.png)
 
 ## Description
 
