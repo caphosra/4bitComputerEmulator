@@ -1,13 +1,14 @@
 # 4bitComputerEmulator
 
-It is a emulator for 4bit computer(GMC-4).
-[Use it!](https://capra314cabra.github.io/4bitComputerEmulator/index.html)
+It is a emulator for 4bit computer(GMC-4).  
+[Use it!](https://capra314cabra.github.io/4bitComputerEmulator/index.html)  
 ![Run](https://github.com/capra314cabra/ImageForREADME/blob/master/4bitComputerEmulator/UseImage.png)
 
 ## Description
 
 This emulates GMC-4 and be able to run on the browser.
 It means you don't have to install this.   
+[Use it!](https://capra314cabra.github.io/4bitComputerEmulator/index.html)
 
 ### What is GMC-4
 
