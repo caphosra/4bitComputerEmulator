@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <title>Capra 4bit Computer Emulator</title>
 
         <meta charset="UTF-8">
-        <meta name="google-site-verification" content="z9yDZ124NEUM98gx2wZhADcTbyiYQ_HoPB-9gnQJ8dU" />
+        <link rel="icon" href="favicon.ico">
 
         <script src="script/notice.js"></script>
         <script src="script/memoryview.js"></script>
@@ -43,9 +43,13 @@
                 <button onclick="getProgramText()">Get</button>
                 <button onclick="setProgramText()">Set</button>
 
+                <p>The Throughput</p>
+                <input type="range" min="1" max="100" value="50" id="wait_count" oninput="setWAIT_COUNT()">
+                <div id="wait_count_out" class="sliderText">50</div>
+
                 <p>One Frame</p>
-                <input type="range" min="1" max="100" value="50" id="oneframe" oninput="setOneFrame()">
-                <div id="oneframe_out" class="oneframe_out">50</div>
+                <input type="range" min="1" max="50" value="20" id="oneframe" oninput="setOneFrame()">
+                <div id="oneframe_out" class="sliderText">20</div>
             </div>
             <div class="centerBox">
                 <div>
